@@ -1,13 +1,158 @@
 <!-- <link rel="stylesheet" href="/css/booking.css" /> -->
 <% layout("/layouts/boilerplate") %>
 
-<div class="container">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  body {
+    background-color: #f4f7fa;
+    /* padding: 2rem; */
+  }
+
+  .container-requests {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  h1 {
+    text-align: center;
+    color: #1f3b70;
+    margin-bottom: 2rem;
+  }
+
+  .booking-requests {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .request-card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9ff;
+    border: 1px solid #ddd;
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  }
+
+  .info-of-requests h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-of-requests p {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    color: #555;
+  }
+
+  .status {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+
+  .status.pending {
+    color: #856404;
+    background-color: #fff3cd;
+  }
+
+  .status.confirmed {
+    color: #155724;
+    background-color: #d4edda;
+  }
+
+  .actions-requests {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .accept-btn,
+  .decline-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .accept-btn {
+    background-color: #28a745;
+    color: white;
+  }
+
+  .decline-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+
+  .accept-btn:disabled,
+  .decline-btn:disabled {
+    background-color: #bbb;
+    cursor: not-allowed;
+  }
+
+  .dashboard {
+    display: flex;
+    height: 100vh;
+  }
+
+  .sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #1f3b73, #1f3b70);
+    color: white;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .sidebar h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-item {
+    text-decoration: none;
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+
+  .nav-item:hover,
+  .nav-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<div class="container-requests">
   <h1>Booking Requests</h1>
 
   <div class="booking-requests">
     <!-- Booking Request Card -->
     <div class="request-card">
-      <div class="info">
+      <div class="info-of-requests">
         <h3>Guest: Rahul Sharma</h3>
         <p><strong>Property:</strong> Modern Apartment</p>
         <p><strong>Dates:</strong> May 5 – May 10, 2025</p>
@@ -15,15 +160,15 @@
           <strong>Status:</strong> <span class="status pending">Pending</span>
         </p>
       </div>
-      <div class="actions">
-        <button class="accept-btn">Accept</button>
-        <button class="decline-btn">Decline</button>
+      <div class="actions-requests">
+        <a href="/listings"><button class="accept-btn">Accept</button></a>
+        <a href="/listings"><button class="decline-btn">Decline</button></a>
       </div>
     </div>
 
     <!-- Another Request -->
     <div class="request-card">
-      <div class="info">
+      <div class="info-of-requests">
         <h3>Guest: Priya Verma</h3>
         <p><strong>Property:</strong> Cozy Studio</p>
         <p><strong>Dates:</strong> May 12 – May 15, 2025</p>
@@ -32,7 +177,7 @@
           <span class="status confirmed">Confirmed</span>
         </p>
       </div>
-      <div class="actions">
+      <div class="actions-requests">
         <button class="accept-btn" disabled>Accepted</button>
         <button class="decline-btn" disabled>Declined</button>
       </div>

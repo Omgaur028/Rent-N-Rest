@@ -1,13 +1,14 @@
 <% layout("/layouts/boilerplate") %>
 
 <div class="container mx-auto px-4 py-8">
+  <% if (listing) { %>
   <!-- Listing Details -->
   <ul class="space-y-4 bg-white p-6 rounded-xl shadow-md">
     <li class="text-2xl font-semibold text-gray-800"><%= listing.title %></li>
 
     <li>
       <img
-        src="<%= listing.image.url %>"
+        src="<%= listing.image?.url || '/default.jpg' %>"
         alt="listing image"
         class="w-full h-64 object-cover rounded-lg shadow"
       />
@@ -15,28 +16,24 @@
 
     <li class="text-gray-600"><%= listing.description %></li>
     <li class="text-lg text-green-700 font-medium">
-      &#8377; <%= listing.price.toLocaleString("en-IN") %>
+      &#8377; <%= listing.price?.toLocaleString("en-IN") %>
     </li>
     <li class="text-gray-500">
       <%= listing.location %>, <%= listing.country %>
     </li>
   </ul>
 
-  <!-- Edit, Delete, and Reserve Buttons -->
-  <div class="mt-6 flex flex-col items-center space-y-4">
+  <!-- Buttons -->
+  <div class="mt-6 flex flex-col items-center space-y-4 w-full">
     <div
-      class="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 w-full sm:w-auto justify-center items-center"
+      class="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 justify-center w-full sm:w-auto"
     >
-      <!-- Edit Button -->
       <a
         href="/listings/<%= listing._id %>/edit"
-        class="w-full sm:w-auto px-5 py-2.5 text-white bg-yellow-500 hover:bg-yellow-600 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm text-center transition duration-200 ease-in-out"
-        aria-label="Edit listing"
+        class="w-full sm:w-auto px-6 py-3 bg-yellow-500 text-white font-semibold rounded-lg hover:bg-yellow-600 text-sm text-center transition"
+        >✏️ Edit</a
       >
-        ✏️ Edit
-      </a>
 
-      <!-- Delete Button -->
       <form
         method="POST"
         action="/listings/<%= listing._id %>?_method=DELETE"
@@ -44,25 +41,22 @@
       >
         <button
           type="submit"
-          class="w-full px-5 py-2.5 text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm transition duration-200 ease-in-out"
-          aria-label="Delete this listing"
+          class="w-full sm:w-[5rem] sm:h-[3rem] px-6 py-3 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 text-sm transition"
         >
           🗑️ Delete
         </button>
       </form>
     </div>
 
-    <!-- Reserve Button -->
     <button
-      class="mt-4 px-6 py-3 bg-red-600 text-white font-semibold rounded-xl shadow-lg hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 active:bg-red-800 transition duration-200 ease-in-out"
-      aria-label="Reserve this listing"
+      class="w-full sm:w-auto mt-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-xl shadow-lg hover:bg-red-700 transition"
     >
       ❤️ Reserve Now
     </button>
   </div>
 
-  <!-- Review Section -->
-  <div class="col-8 offset-2 mt-10 bg-white p-6 rounded-xl shadow-md">
+  <!-- Reviews -->
+  <div class="mt-10 bg-white p-6 rounded-xl shadow-md">
     <h4 class="text-xl font-semibold text-gray-800 mb-4">Leave a Review</h4>
 
     <form
@@ -104,8 +98,7 @@
     </form>
 
     <h4 class="mt-10 text-xl font-semibold text-gray-800">All Reviews</h4>
-
-    <% for (let review of listing.reviews) { %>
+    <% for (let review of listing.reviews || []) { %>
     <div class="card bg-gray-100 rounded-lg p-4 shadow mt-4">
       <h5 class="font-semibold text-gray-800">John Doe</h5>
       <p class="text-gray-600"><%= review.comment %></p>
@@ -114,7 +107,7 @@
     <% } %>
   </div>
 
-  <!-- Offers and Add-on Services Section -->
+  <!-- Offers -->
   <div class="mt-10">
     <h4 class="text-xl font-semibold text-gray-800 mb-3">
       What this place offers
@@ -143,7 +136,9 @@
     </div>
   </div>
 
-  <div class="col-6 offset-3 mt-10">
-    <hr class="border-gray-300" />
+  <% } else { %>
+  <div class="bg-red-100 text-red-700 p-4 rounded-lg mt-10 text-center">
+    <p>⚠️ Listing not found. Please go back and try again.</p>
   </div>
+  <% } %>
 </div>

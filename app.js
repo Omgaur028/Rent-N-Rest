@@ -14,7 +14,7 @@ const passport = require("passport");
 const Localstrategy = require("passport-local");
 const user = require("./database/user.js");
 const flash = require("connect-flash");
-const routes = require("./routes/user.js");
+const router = express.Router();
 
 const mongo_url = "mongodb+srv://iamayush616:3002@cluster0.tt4yta2.mongodb.net";
 
@@ -72,14 +72,14 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/demouser", async (req, res) => {
-  let fakeuser = new user({
-    email: "student@123",
-    username: "Om-Mohan-Gaur",
-  });
-  let registeruser = await user.register(fakeuser, "helloworld");
-  res.send(registeruser);
-});
+// app.get("/demouser", async (req, res) => {
+//   let fakeuser = new user({
+//     email: "student@123",
+//     username: "Om-Mohan-Gaur",
+//   });
+//   let registeruser = await user.register(fakeuser, "helloworld");
+//   res.send(registeruser);
+// });
 
 app.get("/", (req, res) => {
   res.render("user/login.ejs");
@@ -88,6 +88,19 @@ app.get("/", (req, res) => {
 app.get("/signup", (req, res) => {
   res.render("user/signup.ejs");
 });
+app.use(express.urlencoded({ extended: true }));
+const userRoutes = require("./routes/user");
+app.use("/", userRoutes);
+
+router.get("/new", (req, res) => {
+  if (!req.isAuthenticated()) {
+    req.flash("you are not authorised");
+    return res.redirect("/");
+  }
+  res.render("listings/new.ejs");
+});
+
+// or app.use("/user", userRoutes) if your routes are prefixed
 // const validateListing = (req, res, next) => {
 //   let { error } = listingSchema.validate(req.body);
 //   if (error) {
@@ -189,7 +202,7 @@ app.post("/listings/:id/reviews", async (req, res) => {
   await listing.save();
 
   console.log("new review has been saved");
-  res.send("new review saved");
+  res.render("/listings/show.ejs");
 });
 // app.get("/testlisten", async (req, res)=>{
 // 	let samplelisting = new listing ({
