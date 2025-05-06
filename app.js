@@ -7,12 +7,14 @@ const methodOverride = require("method-override");
 const ejsmate = require("ejs-mate");
 const wrapasync = require("./utils/wrapasync.js");
 const expresserror = require("./utils/expresserror.js");
+const session = require("express-session");
 // const { listingSchema, reviewSchema } = require("./schema.js");
 const Review = require("./database/review.js");
 const passport = require("passport");
 const Localstrategy = require("passport-local");
 const user = require("./database/user.js");
 const flash = require("connect-flash");
+const routes = require("./routes/user.js");
 
 const mongo_url = "mongodb://localhost:27017/SekendHand";
 
@@ -36,20 +38,33 @@ app.engine("ejs", ejsmate);
 app.use(express.static(path.join(__dirname, "/stylesheet")));
 // app.use('/images', express.static('images'));
 
-// app.use(flash());
-
 app.get("/home", (req, res) => {
   res.render("listings/home.ejs");
 });
 
-app.use(session(sessionOption));
+const sessionOptions = {
+  secret: "mysupersecretcode",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+    httpOnly: true,
+  },
+};
+
+app.use(session(sessionOptions));
 app.use(flash());
 
-app.use(passport.initialize);
-app.use(passport.session);
-app.use(new Localstrategy(user.authenticate()));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new Localstrategy(user.authenticate()));
 passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser());
+
+// app.all("*"(req, res, next)=>{
+//   next(new expresserror(404,"not found!"));
+// });
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
@@ -62,8 +77,13 @@ app.get("/demouser", async (req, res) => {
     email: "student@123",
     username: "Om-Mohan-Gaur",
   });
+  let registeruser = await user.register(fakeuser, "helloworld");
+  res.send(registeruser);
 });
 
+app.get("/", (req, res) => {
+  res.render("/user/login.ejs");
+});
 // const validateListing = (req, res, next) => {
 //   let { error } = listingSchema.validate(req.body);
 //   if (error) {
