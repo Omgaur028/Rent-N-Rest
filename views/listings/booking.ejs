@@ -1,0 +1,43 @@
+<!-- <link rel="stylesheet" href="/css/booking.css" /> -->
+<% layout("/layouts/boilerplate") %>
+
+<div class="container">
+  <h1>Booking Requests</h1>
+
+  <div class="booking-requests">
+    <!-- Booking Request Card -->
+    <div class="request-card">
+      <div class="info">
+        <h3>Guest: Rahul Sharma</h3>
+        <p><strong>Property:</strong> Modern Apartment</p>
+        <p><strong>Dates:</strong> May 5 – May 10, 2025</p>
+        <p>
+          <strong>Status:</strong> <span class="status pending">Pending</span>
+        </p>
+      </div>
+      <div class="actions">
+        <button class="accept-btn">Accept</button>
+        <button class="decline-btn">Decline</button>
+      </div>
+    </div>
+
+    <!-- Another Request -->
+    <div class="request-card">
+      <div class="info">
+        <h3>Guest: Priya Verma</h3>
+        <p><strong>Property:</strong> Cozy Studio</p>
+        <p><strong>Dates:</strong> May 12 – May 15, 2025</p>
+        <p>
+          <strong>Status:</strong>
+          <span class="status confirmed">Confirmed</span>
+        </p>
+      </div>
+      <div class="actions">
+        <button class="accept-btn" disabled>Accepted</button>
+        <button class="decline-btn" disabled>Declined</button>
+      </div>
+    </div>
+
+    <!-- Add more requests dynamically from backend -->
+  </div>
+</div>

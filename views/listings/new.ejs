@@ -1,0 +1,752 @@
+<!-- 
+
+<div class="row mt-3 newform">
+  <div class="col-8 offset-2" id="all">
+    <br />
+    <h3>Create a New Listing</h3>
+    <br />
+
+    <form
+      method="POST"
+      action="/listings"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label"> <b>Title</b> </label>
+        <input
+          name="listing[title]"
+          placeholder="enter title"
+          type="text"
+          class="form-control"
+          required
+        />
+
+        <div class="valid-feedback">Title looks good!!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label"> <b>Description</b> </label>
+        <textarea
+          name="listing[description]"
+          placeholder="enter description"
+          class="form-control"
+          required
+        ></textarea>
+
+        <div class="invalid-feedback">Please enter a short description</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label"> <b>Upload Image </b></label>
+        <input
+          name="listing[image]"
+          type="file"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="dropdown mb-3">
+        <label for="title" class="form-label"> <b>Listing Catagory</b> </label
+        ><br />
+        <button
+          class="btn btn-light dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+        >
+          Choose Catagory
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Trending</a></li>
+          <li><a class="dropdown-item" href="#">Rooms</a></li>
+          <li><a class="dropdown-item" href="#">Iconic Cities</a></li>
+          <li><a class="dropdown-item" href="#">Castles</a></li>
+          <li><a class="dropdown-item" href="#">Mountain Views</a></li>
+          <li><a class="dropdown-item" href="#">Camping</a></li>
+          <li><a class="dropdown-item" href="#">Amazing Nature</a></li>
+          <li><a class="dropdown-item" href="#">Form</a></li>
+          <li><a class="dropdown-item" href="#">Arctic</a></li>
+          <li><a class="dropdown-item" href="#">Boats</a></li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label"> <b>Price</b> </label>
+          <input
+            name="listing[price]"
+            placeholder="3500"
+            type="number"
+            class="form-control"
+            required
+          />
+
+          <div class="invalid-feedback">Price should be valid</div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label"> <b>Country</b> </label>
+          <input
+            name="listing[country]"
+            placeholder="India"
+            type="text"
+            class="form-control"
+            required
+          />
+
+          <div class="invalid-feedback">Country name should be valid</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label"> <b>Location</b> </label>
+        <input
+          name="listing[location]"
+          placeholder="Current Location"
+          type="text"
+          class="form-control"
+          required
+        />
+
+        <div class="invalid-feedback">Location should be valid</div>
+      </div>
+
+      <button class="btn btn-success mt-3">Add</button>
+      <br /><br />
+    </form>
+  </div>
+</div> -->
+--> <% layout("/layouts/boilerplate") %>
+
+<!-- <body>
+  <div class="container mt-3">
+    <div class="row justify-content-center">
+      <div class="new-edit-form-inp">
+        <form
+          action="/listings"
+          method="post"
+          novalidate
+          class="needs-validation"
+          enctype="multipart/form-data"
+        >
+          <h3>Create a New Listing</h3>
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              name="listing[title]"
+              id="title"
+              placeholder="Enter a Catchy Title"
+              required
+            />
+            <div class="valid-feedback">Title looks good!</div>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              name="listing[description]"
+              id="description"
+              cols="30"
+              rows="10"
+              placeholder="Enter description"
+              class="form-control"
+              required
+            ></textarea>
+            <div class="invalid-feedback">Please enter a short description</div>
+          </div>
+          <div class="mb-3">
+            <label for="image" class="form-label">Upload Listing Image</label>
+            <input
+              type="file"
+              name="listing[image]"
+              id="image"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Please select image to upload</div>
+          </div>
+          <div>
+            <label for="category" class="form-label">Choose Category</label>
+            <div class="category-choose"></div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="rooms"
+                    name="listing[category]"
+                    value="Rooms"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="rooms"
+                  >
+                    <i class="fa-solid fa-bed me-2"></i> Rooms
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="iconic-cities"
+                    name="listing[category]"
+                    value="Iconic-Cities"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="iconic-cities"
+                  >
+                    <i class="fa-solid fa-mountain-city me-2"></i> Iconic Cities
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="mountains"
+                    name="listing[category]"
+                    value="Mountains"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="mountains"
+                  >
+                    <i class="fa-solid fa-mountain-sun me-2"></i> Mountains
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="castles"
+                    name="listing[category]"
+                    value="Castles"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="castles"
+                  >
+                    <i class="fa-brands fa-fort-awesome me-2"></i> Castles
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="boat"
+                    name="listing[category]"
+                    value="Boat"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="boat"
+                  >
+                    <i class="fa-solid fa-sailboat me-2"></i> Boat
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="ski-in-out"
+                    name="listing[category]"
+                    value="Ski-in-out"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="ski-in-out"
+                  >
+                    <i class="fa-solid fa-person-snowboarding me-2"></i>
+                    Ski-in/out
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="apartment"
+                    name="listing[category]"
+                    value="Apartment"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="apartment"
+                  >
+                    <i class="fa-solid fa-building me-2"></i> Apartment
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="new"
+                    name="listing[category]"
+                    value="New"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="new"
+                  >
+                    <i class="fa-solid fa-key me-2"></i> New
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="woodlands"
+                    name="listing[category]"
+                    value="Woodlands"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="woodlands"
+                  >
+                    <i class="fa-solid fa-tree-city me-2"></i> Woodlands
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="lake"
+                    name="listing[category]"
+                    value="Lake"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="lake"
+                  >
+                    <i class="fa-solid fa-water me-2"></i> Lake
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="amazing-pools"
+                    name="listing[category]"
+                    value="Amazing-Pools"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="amazing-pools"
+                  >
+                    <i class="fa-solid fa-person-swimming me-2"></i> Amazing
+                    Pools
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="cabins"
+                    name="listing[category]"
+                    value="Cabins"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="cabins"
+                  >
+                    <i class="fa-solid fa-house me-2"></i> Cabins
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="camping"
+                    name="listing[category]"
+                    value="Camping"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="camping"
+                  >
+                    <i class="fa-solid fa-campground me-2"></i> Camping
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="farm"
+                    name="listing[category]"
+                    value="Farm"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="farm"
+                  >
+                    <i class="fa-solid fa-cow me-2"></i> Farm
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="arctic"
+                    name="listing[category]"
+                    value="Arctic"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="arctic"
+                  >
+                    <i class="fa-solid fa-snowflake me-2"></i> Arctic
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="beach"
+                    name="listing[category]"
+                    value="Beach"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="beach"
+                  >
+                    <i class="fa-solid fa-umbrella-beach me-2"></i> Beach
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="countryside"
+                    name="listing[category]"
+                    value="Countryside"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="countryside"
+                  >
+                    <i class="fa-solid fa-house-chimney-window me-2"></i>
+                    Countryside
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="bed-and-breakfasts"
+                    name="listing[category]"
+                    value="Bed-and-Breakfasts"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="bed-and-breakfasts"
+                  >
+                    <i class="fa-solid fa-mug-hot me-2"></i> Bed & Breakfasts
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="campsite"
+                    name="listing[category]"
+                    value="Campsite"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="campsite"
+                  >
+                    <i class="fa-solid fa-tents me-2"></i> Campsite
+                  </label>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    id="historical-homes"
+                    name="listing[category]"
+                    value="Historical-Homes"
+                    required
+                  />
+                  <label
+                    class="form-check-label d-flex align-items-center"
+                    for="historical-homes"
+                  >
+                    <i class="fa-solid fa-landmark me-2"></i> Historical Homes
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="invalid-feedback">Choose Category</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+
+            <input
+              placeholder="Enter price"
+              class="form-control"
+              name="listing[price]"
+              id="price"
+              required
+            />
+            <div class="invalid-feedback">Price should be valid</div>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+
+            <input
+              type="text"
+              name="listing[location]"
+              id="location"
+              class="form-control"
+              placeholder="Enter location"
+              required
+            />
+            <div class="invalid-feedback">Location should be valid</div>
+          </div>
+          <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+
+            <input
+              type="text"
+              name="listing[country]"
+              id="country"
+              class="form-control"
+              placeholder="Enter country"
+              required
+            />
+            <div class="invalid-feedback">Country Name should be valid</div>
+          </div>
+          <button class="btn btn-dark add-btn mt-3">Add</button>
+          <br /><br />
+        </form>
+      </div>
+    </div>
+  </div>
+</body> -->
+
+<!-- html file    -->
+
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+  }
+
+  body {
+    background: #f4f7fa;
+    /* padding: 2rem; */
+  }
+
+  /* .container {
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  } */
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #1f3b70;
+  }
+
+  .property-form .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .property-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .property-form input,
+  .property-form textarea,
+  .property-form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fdfdfd;
+    transition: border 0.2s;
+  }
+
+  .property-form input:focus,
+  .property-form textarea:focus,
+  .property-form select:focus {
+    border-color: #1f3b70;
+    outline: none;
+  }
+
+  .property-form button {
+    display: block;
+    width: 100%;
+    background-color: #1f3b70;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .property-form button:hover {
+    background-color: #3651a3;
+  }
+
+  .dashboard {
+    display: flex;
+    height: 100vh;
+  }
+
+  .sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #1f3b73, #1f3b70);
+    color: white;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .sidebar h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-item {
+    text-decoration: none;
+    color: white;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+
+  .nav-item:hover,
+  .nav-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+</style>
+
+<body>
+  <!-- <div class="dashboard">
+        <aside class="sidebar">
+          <h2>HostPanel</h2>
+          <nav class="nav-menu">
+            
+            <a href="#" class="nav-item">👤 View/Edit Profile</a>
+            <a href="#" class="nav-item active">🏠 Add Property</a>
+            <a href="#" class="nav-item">📋 Listed Properties</a>
+            <a href="#" class="nav-item">📨 Booking Requests</a>
+            <a href="#" class="nav-item">📖 Booking History</a>
+            <a href="#" class="nav-item">📊 Analytics</a>
+          </nav>
+        </aside> -->
+
+  <div class="container">
+    <h1>Add New Property</h1>
+    <form class="property-form">
+      <div class="form-group">
+        <label for="title">Property Title</label>
+        <input type="text" id="title" name="title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" required />
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price per Night (INR)</label>
+        <input type="number" id="price" name="price" min="0" required />
+      </div>
+
+      <div class="form-group">
+        <label for="type">Property Type</label>
+        <select id="type" name="type" required>
+          <option value="">Select Type</option>
+          <option value="apartment">Apartment</option>
+          <option value="studio">Studio</option>
+          <option value="house">House</option>
+          <option value="shared">Shared Room</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="amenities">Amenities (comma-separated)</label>
+        <input
+          type="text"
+          id="amenities"
+          name="amenities"
+          placeholder="WiFi, AC, Kitchen, Parking"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="images">Upload Images</label>
+        <input
+          type="file"
+          id="images"
+          name="images[]"
+          multiple
+          accept="image/*"
+        />
+      </div>
+      <form action="/submit-property" method="POST">
+        <!-- your form fields here -->
+        <button type="submit">Submit Property</button>
+      </form>
+
+      <!-- <button type="submit">Submit Property</button> -->
+    </form>
+  </div>
+</body>

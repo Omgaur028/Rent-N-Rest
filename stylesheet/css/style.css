@@ -1,0 +1,150 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+.cont-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center; /* horizontal center */
+  min-height: calc(100vh - 120px); /* adjust for navbar & footer height */
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  max-width: 100%;
+}
+
+/* General Layout */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  max-width: 700px;
+}
+
+ul li {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Listing Image */
+ul li img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+}
+
+/* Buttons */
+button {
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: rgb(6, 5, 5);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button a {
+  color: rgb(17, 16, 16);
+  text-decoration: none;
+}
+
+/* Review Section */
+.col-8.offset-3 {
+  max-width: 800px;
+  margin: 2rem auto;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  resize: vertical;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  background-color: #fefefe;
+}
+
+input[type="range"] {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* Reviews Display */
+.card {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-body {
+  padding: 0.5rem;
+}
+
+.card h5 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.card-text {
+  margin: 0.4rem 0;
+}
+
+/* Review Cards in Grid */
+.all-reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* Offers Section */
+.offers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.offers i {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #eef2f5;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.offers i:hover {
+  background: #dbe4ec;
+}
+
+/* Services Section */
+#services {
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+#services p {
+  color: #555;
+  font-size: 0.95rem;
+}

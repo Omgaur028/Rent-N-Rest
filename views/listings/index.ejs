@@ -1,0 +1,193 @@
+<% layout("/layouts/boilerplate")%>
+
+<style>
+/* General Reset and Base Styles */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* Filters Section */
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background: #fff;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.filter i {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.filter:hover {
+  color: #007bff;
+}
+
+/* Tax Switch */
+.tax-switch {
+  margin-left: auto;
+}
+
+/* Listings Grid */
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #f4f4f4;
+
+}
+
+/* Individual Card */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.tax-info {
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.listing-link {
+  text-decoration: none;
+  color: inherit;
+}
+</style>
+
+
+ <div id="filters">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p>Trending</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p>Rooms</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-city"></i></div>
+        <p>Iconic Cities</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-brands fa-fort-awesome"></i></div>
+        <p>Castles</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-mountain-sun"></i></i></div>
+        <p>Mountain Views</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-tent"></i></div>
+        <p>Camping</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p>Amazing Nature</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-tractor"></i></div>
+        <p>Farms</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-snowflake"></i></div>
+        <p>Arctic</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-ship"></i></div>
+        <p>Boats</p>
+      </div>
+
+      <div class="tax-switch">
+        <div class="form-check-reverse form-switch">
+          <input 
+              class="form-check-input" 
+              type="checkbox" 
+              role="switch" 
+              id="flexSwitchCheckDefault">
+          <label 
+              class="form-check-label" 
+              for="flexSwitchCheckDefault">Display Taxes
+          </label>
+        </div>
+      </div>
+
+  </div>
+<div class="row">
+  <% for(let listing of allListings) { %>
+  <a href="/listings/<%= listing._id%>" class="listing-link">
+    <div class="card">
+      <img src="<%= listing.image.url %>" alt="listing_image" />
+
+      <div class="card-body">
+        <b><%= listing.title %></b> <br />
+        &#8377; <%= listing.price %> /Night
+        <i class="tax-info">&nbsp;+18% GST</i>
+      </div>
+      <br>
+      <br>
+    </div>
+  </a>
+  <% } %>
+</div>
+
+<!-- <script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+
+    for (info of taxInfo) {
+      if (info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+</script> -->

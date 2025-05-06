@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RnR</title>
+  <style>
+  .body{
+  margin: 0;
+}
+
+  .site-header {
+    background: #222;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 7px 20px;
+  }
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0073e6;
+  }
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+  }
+  .main-nav a {
+    color: #f3f2f2;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  .main-nav a:hover {
+    color: #0073e6;
+  }
+  .header-actions .btn {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+  }
+  .login-btn {
+    background: transparent;
+    border: 1px solid #0073e6;
+    color: #0073e6;
+  }
+  .signup-btn {
+    background: #0073e6;
+    color: white;
+    border: none;
+  }
+  .login-btn:hover, .signup-btn:hover {
+    opacity: 0.85;
+  }
+
+  </style>
+</head>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <div class="logo">Rent-N-Rest</div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/home">Home</a></li>
+          <li><a href="/listings">All listings</a></li>
+          <li><a href="/listings/new">Create New Listing</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="#" class="btn login-btn">Login</a>
+        <a href="#" class="btn signup-btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+  
+
+    <!-- <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <script>
+      function toggleMenu() {
+        document.querySelector(".navbar ul").classList.toggle("active");
+      }
+    </script> -->
+  </body>
+</html>
