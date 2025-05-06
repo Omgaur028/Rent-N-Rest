@@ -1,36 +1,67 @@
-<% layout("/layouts/boilerplate") %>
+<% layout("/layouts/boilerplate")%>
 
-<body>
-  <div class="container mt-3">
-    <div class="row justify-content-center">
-      <div class="login-signup-form-inp">
-        <h3 class="mb-3">Login on WanderLust</h3>
-        <form action="/login" method="post" novalidate class="needs-validation">
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
-            <input
-              type="text"
-              class="form-control"
-              name="username"
-              id="username"
-              placeholder="Enter Username"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              name="password"
-              id="password"
-              placeholder="Enter Password"
-              required
-            />
-          </div>
-          <button class="btn btn-success">Login</button>
-        </form>
+
+<body-no
+  class="min-h-screen bg-gradient-to-r from-indigo-300 to-cyan-300 flex items-center justify-center "
+>
+<br>
+  <div
+    class="w-full max-w-md  text-white rounded-2xl shadow-2xl p-8 sm:p-10"
+  >
+    <h2 class="text-3xl font-bold text-center mb-6">Login on Rent-N-Rest</h2>
+    <br>
+
+    <form action="/login" method="post" class="space-y-6">
+      <!-- Username -->
+      <div>
+        <label for="username" class="block text-sm font-semibold mb-2"
+          >Username</label
+        >
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Enter your username"
+          required
+          class="w-full px-4 py-3 border border-white/30 text-gray-900 bg-white/90 rounded-lg focus:ring-2 focus:ring-white focus:outline-none shadow-sm"
+        />
       </div>
+      <br>
+
+      <!-- Password -->
+      <div>
+        <label for="password" class="block text-sm font-semibold mb-2"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter your password"
+          required
+          class="w-full px-4 py-3 border border-white/30 text-gray-900 bg-white/90 rounded-lg focus:ring-2 focus:ring-white focus:outline-none shadow-sm"
+        />
+      </div>
+      <br>
+
+      <!-- Login Button -->
+      <div>
+        <button
+          type="submit"
+          class="w-full bg-white text-indigo-700 font-semibold py-3 rounded-lg transition duration-300 hover:bg-gray-100 shadow-md"
+        >
+          Login
+        </button>
+      </div>
+    </form>
+
+    <!-- Optional: Extra Links -->
+    <div class="mt-6 text-center text-sm text-white">
+      <p>
+        Don't have an account?
+        <a href="/register" class="underline font-semibold">Sign up</a>
+      </p>
     </div>
+    <br>
   </div>
 </body>

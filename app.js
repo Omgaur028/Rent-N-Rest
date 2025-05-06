@@ -82,7 +82,11 @@ app.get("/demouser", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("/user/login.ejs");
+  res.render("user/login.ejs");
+});
+
+app.get("/signup", (req, res) => {
+  res.render("user/signup.ejs");
 });
 // const validateListing = (req, res, next) => {
 //   let { error } = listingSchema.validate(req.body);
@@ -160,7 +164,6 @@ app.get("/listings/:id/edit", async (req, res) => {
 // );
 app.put(
   "/listings/:id",
-
   wrapasync(async (req, res) => {
     let { id } = req.params;
     await Listing.findByIdAndUpdate(id, { ...req.body.listing });
@@ -211,6 +214,6 @@ app.get("/booking", (req, res) => {
   res.render("listings/booking.ejs");
 });
 
-app.listen(8080, () => {
-  console.log("server is listening to port 8080");
+app.listen(3000, () => {
+  console.log("server is listening to port 3000");
 });

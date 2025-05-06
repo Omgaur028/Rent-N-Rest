@@ -1,51 +1,68 @@
 <% layout("/layouts/boilerplate") %>
 
-<body>
-  <div class="container mt-3">
+<body-nop class="bg-gradient-to-r from-green-100 to-blue-200 min-h-screen flex items-center justify-center p-4">
+  <div class="container mt-3 bg-white p-6 rounded-xl shadow-xl w-full max-w-lg">
     <div class="row justify-content-center">
-      <div class="login-signup-form-inp">
-        <h3 class="mb-3">Signup on Rent-N-Rest</h3>
+      <div class="login-signup-form-inp w-full">
+        <h3 class="mb-3 text-2xl font-bold text-center text-gray-800">Signup on WanderLust</h3>
         <form
           action="/signup"
           method="post"
           novalidate
-          class="needs-validation"
-        >
-          <div class="mb-3">
-            <label for="username" class="form-label">Username</label>
+          class="needs-validation space-y-6">
+
+          <br>
+          <!-- Username -->
+          <div class="mb-3 p-2">
+            <label for="username" class="form-label text-gray-700 font-semibold">Username</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               name="username"
               id="username"
               placeholder="Enter Username"
               required
             />
-            <div class="valid-feedback">Looks good!</div>
+            <div class="valid-feedback text-green-600">Looks good!</div>
           </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
+          <br>
+
+          <!-- Email -->
+          <div class="mb-3 p-2">
+            <label for="email" class="form-label text-gray-700 font-semibold">Email</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               name="email"
               id="email"
               placeholder="Enter Email"
               required
             />
           </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
+          <br>
+
+          <!-- Password -->
+          <div class="mb-3 p-2">
+            <label for="password" class="form-label text-gray-700 font-semibold">Password</label>
             <input
               type="password"
-              class="form-control"
+              class="form-control block w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               name="password"
               id="password"
               placeholder="Enter Password"
               required
             />
           </div>
-          <button class="btn btn-success">SignUp</button>
+          <br>
+
+          <!-- Signup Button -->
+          <div class="p-2">
+            <button
+              class="btn btn-success w-full py-2 rounded-lg bg-green-500 text-white font-semibold transition duration-300 hover:bg-green-600"
+            >
+              SignUp
+            </button>
+          </div>
         </form>
       </div>
     </div>
