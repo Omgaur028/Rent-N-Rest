@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const initdata = require("./init.js");
 const list = require("../database/model.js");
 
-const mongo_url = "mongodb://localhost:27017/SekendHand";
+const mongo_url = "mongodb+srv://iamayush616:3002@cluster0.tt4yta2.mongodb.net";
 
 main()
   .then(() => {

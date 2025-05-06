@@ -16,7 +16,7 @@ const user = require("./database/user.js");
 const flash = require("connect-flash");
 const routes = require("./routes/user.js");
 
-const mongo_url = "mongodb://localhost:27017/SekendHand";
+const mongo_url = "mongodb+srv://iamayush616:3002@cluster0.tt4yta2.mongodb.net";
 
 main()
   .then(() => {
